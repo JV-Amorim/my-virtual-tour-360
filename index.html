@@ -1,46 +1,27 @@
 <html>
-  <head>
-    <title>Casas360 - Compre a sua casa com Realidade Virtual!</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="./static_assets/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./static_assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./static_assets/favicon/favicon-16x16.png">
-    <link rel="manifest" href="./static_assets/favicon/site.webmanifest">
-    <link rel="mask-icon" href="./static_assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <style>body { margin: 0; }</style>
+<head>
+    <meta charset="UTF-8">
+    <title>My Virtual Tour</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./static_scripts/buttons.css">
   </head>
   <body>
-    <div id="initialize">
-      <div id="placeHolder">
-        <div style="background-image:url('./static_assets/house.jpg');height:60%;background-position:center;background-repeat: no-repeat;background-size: cover;"></div>
-        <div class="container px-md-3 px-sm-0">
-          <div class="col-md-12 mb-4 white-text text-center wow fadeIn">
-            <h3 class="display-3 font-weight-bold white-text mb-0 pt-md-5 pt-5">Casas360</h3>
-            <hr>
-            <h4 class="subtext-header mt-2 mb-4">Bem-vindo ao Casas360. Compre a sua casa com Realidade Virtual!</h4>
-            <button type="button" class="btn btn-dark" onClick="enterApp();">Começar</button>
-          </div>
-        </div>
-      </div>
+    <div id="reload-panel"></div>
+    <div id="buttons-container">
+      <button id="fullscreen-button" type="button">
+        <img src="./static_assets/fullscreen-icon.png" alt="">
+      </button>
+      <button id="vr-button" type="button">
+        <img src="./static_assets/vr-icon.png" alt="">
+      </button>
     </div>
-    <script src="./webvr-polyfill.js"></script>
+    <div id="initialize"></div>
+    <script src="./static_scripts/webvr-polyfill.min.js"></script>
     <script src="./client.bundle?platform=vr"></script>
+    <script src="./static_scripts/initializer.js"></script>
     <script>
-      function enterApp() {
-        var polyfill = new WebVRPolyfill();
-        React360.init(
-          'index.bundle?platform=vr&dev=true',
-          document.getElementById('initialize'),
-          {
-            assetRoot: 'static_assets/',
-          }
-        );
-        const elem = document.getElementById('placeHolder');
-        elem.parentNode.removeChild(elem);
-      }
+      startApp();
     </script>
   </body>
 </html>
